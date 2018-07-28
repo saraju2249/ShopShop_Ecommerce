@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/tab_home"
+        icon="@drawable/ic_home_black_24dp"
+        title="Home" />
+    <tab
+        id="@+id/tab_search"
+        icon="@drawable/ic_search_white_24dp"
+        title="Search" />
+    <tab
+        id="@+id/tab_cart"
+        icon="@drawable/ic_shopping_cart_black_24dp"
+        title="Cart" />
+    <tab
+        id="@+id/tab_account"
+        icon="@drawable/ic_friends"
+        title="Account" />
+    <tab
+        id="@+id/tab_more"
+        icon="@drawable/ic_more_black_24dp"
+        title="More" />
+</tabs>

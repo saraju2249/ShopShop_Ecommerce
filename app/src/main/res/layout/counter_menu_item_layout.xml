@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/BadgeFrameLayout"
+    android:layout_width="24dp"
+    android:layout_height="24dp">
+
+
+        <RelativeLayout
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/ic_favorite_white_24dp">
+
+
+        </RelativeLayout>
+
+
+        <ImageView
+            android:id="@+id/BadgeRelativeLayout"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:padding="0dp" />
+
+
+</RelativeLayout>

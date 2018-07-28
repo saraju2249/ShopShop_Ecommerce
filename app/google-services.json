@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "463963321492",
+    "firebase_url": "https://shopshop-27a94.firebaseio.com",
+    "project_id": "shopshop-27a94",
+    "storage_bucket": "shopshop-27a94.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463963321492:android:fda44413e2c6d0d0",
+        "android_client_info": {
+          "package_name": "com.esperer.shopshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "463963321492-qll3bmi8cg3ukvme7sb1rb8cji7glir5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.esperer.shopshop",
+            "certificate_hash": "37e7e53a7345b6f8f4ca854ef58e54660389d55c"
+          }
+        },
+        {
+          "client_id": "463963321492-nb1omupnu3t0p0rg9lfsbl9ghtfl2f2h.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "463963321492-nb1omupnu3t0p0rg9lfsbl9ghtfl2f2h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMFq8ZjESCBscvYqJqUeKYnPypRWdMwsU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "463963321492-nb1omupnu3t0p0rg9lfsbl9ghtfl2f2h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
