@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.esperer.shopshop.R;
-import com.esperer.shopshop.api.IServiceRequest;
+import com.esperer.shopshop.api.ServiceRequest;
 import com.esperer.shopshop.api.ServiceHandler;
 import com.esperer.shopshop.constants.Constant;
 import com.esperer.shopshop.models.StyleSingle;
@@ -26,10 +26,10 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class Styles extends AppCompatActivity implements IServiceRequest {
+public class Styles extends AppCompatActivity implements ServiceRequest {
 
 
-    IServiceRequest serviceRequest;
+    ServiceRequest serviceRequest;
 
     String responseData = "";
     private RecyclerView recyclerView;

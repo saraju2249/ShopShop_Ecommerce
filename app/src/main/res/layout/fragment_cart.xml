@@ -20,7 +20,7 @@
             android:src="@drawable/emptycartmdpi" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
+            android:id="@+id/cart_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Cart Is Empty"
+            android:text="@string/cart_is_empty"
             android:textSize="24sp"
             android:visibility="gone" />
 
@@ -89,7 +89,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:text="Rs. XXXX"
+                            android:text="@string/rs_xxxx"
                             android:textSize="18sp"
                             android:textStyle="bold" />
                     </LinearLayout>

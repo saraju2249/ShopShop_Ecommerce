@@ -40,7 +40,7 @@
             android:layout_weight="1"
             android:alpha="0.5"
             android:gravity="center"
-            android:text="Developing Stage"
+            android:text="@string/developing_stage"
             android:textColor="@color/colorPrimary"
             android:textSize="18sp"
             android:textStyle="bold" />

@@ -94,6 +94,7 @@ public class CartAdapter extends  RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
               boolean  buttonPress;
 
+            /// delete item from cart & refresh list
             deleteCartItem.setOnClickListener(new View.OnClickListener() {
 
 
@@ -103,7 +104,6 @@ public class CartAdapter extends  RecyclerView.Adapter<CartAdapter.ViewHolder> {
                 public void onClick(View v) {
                     DatabaseHelper helper = new DatabaseHelper(mContext);
                     Integer delete = helper.delete(order.getProductId()+"");
-
                     orderList.remove(order);
 
                     helper.getAllData();
@@ -121,7 +121,7 @@ public class CartAdapter extends  RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
             });
 
-
+            ///  start DetailsActivity
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

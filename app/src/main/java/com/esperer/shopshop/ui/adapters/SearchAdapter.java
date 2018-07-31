@@ -13,7 +13,6 @@ import com.esperer.shopshop.constants.Constant;
 import com.esperer.shopshop.models.StyleSingle;
 import com.esperer.shopshop.ui.activities.DetailActivity;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 
 

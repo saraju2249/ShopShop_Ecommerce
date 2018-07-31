@@ -27,7 +27,7 @@
                 android:id="@+id/cart_product_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Product Name"
+                android:text="@string/product_name"
                 android:textSize="@dimen/text_size_small"
                 android:textStyle="bold" />
 
@@ -35,7 +35,7 @@
                 android:id="@+id/cart_product_brand"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Brand Name"
+                android:text="@string/brand_name"
                 android:textSize="@dimen/text_size_small" />
 
             <TextView
@@ -48,7 +48,7 @@
                 android:textSize="@dimen/text_size_xmedium" />
             <TextView android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Delivery charge: FREE"
+                android:text="@string/delivery_charge_free"
                 android:textSize="@dimen/text_size_small"/>
             <LinearLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,14 +59,14 @@
                     android:id="@+id/cart_quantity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Qty: 1"
+                    android:text="@string/qty_1"
                     android:textSize="@dimen/text_size_small" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_medium"
-                    android:text="Size: 40"
+                    android:text="@string/size_42"
                     android:textSize="@dimen/text_size_small" />
             </LinearLayout>
         </LinearLayout>

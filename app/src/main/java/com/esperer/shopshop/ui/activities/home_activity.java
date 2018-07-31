@@ -4,12 +4,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import com.esperer.shopshop.R;
-
 import com.esperer.shopshop.database.DatabaseHelper;
 import com.esperer.shopshop.firebase.StartActivity;
 import com.esperer.shopshop.ui.fragments.Accountfragment;
@@ -27,31 +24,29 @@ import com.roughike.bottombar.OnTabSelectListener;
 
 public class home_activity extends AppCompatActivity {
 
-    public int number;
+    ///public int number;
 
+    /// FirebaseAuth
     private FirebaseAuth mAuth;
+
+    /// SharedPreference
     SharedPreferences sharedpreferences;
 
-    public static BottomNavigationView bottomNav;
+    /// ButtomBar
     BottomBar bottomBar;
-    BottomBarTab cart;
 
 
-
-    final FragmentManager fm = getSupportFragmentManager();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_activity);
 
-
+        /// get SharedPreference
         sharedpreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-
         mAuth = FirebaseAuth.getInstance();
 
 
-
-
+        /// set BottomBar
         bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         bottomBar.setOnTabReselectListener(new OnTabReselectListener() {
             @Override
@@ -60,18 +55,21 @@ public class home_activity extends AppCompatActivity {
             }
         });
 
+        /// Set TabReselected to HomeFragment (which recreate fragment on TabReselected)
+
         bottomBar.setOnTabReselectListener(new OnTabReselectListener() {
             @Override
             public void onTabReSelected(int tabId) {
 
                 if (tabId == R.id.tab_home) {
-
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             new HomeFragment()).commit();
                 }
 
             }
         });
+
+        /// Create Fragments according to selected Tab
 
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
 
@@ -103,49 +101,41 @@ public class home_activity extends AppCompatActivity {
 
 
                 }
-
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         selected).commit();
-
-
-            }
-
-
-        });
-
-
-
+                }
+                });
 
     }
+
 
     @Override
     public void onResume( ) {
-
-
         super.onResume();
+        setBadge();
 
-        DatabaseHelper databaseHelper = new DatabaseHelper(this);
-        int cartCount =  databaseHelper.noOfItem();
-
-       setBadge(cartCount);
     }
 
-
-      public  void setBadge( int num )
-      {
-          BottomBarTab cart = bottomBar.getTabWithId(R.id.tab_cart);
-          cart.setBadgeCount(num);
-
-      }
 
     @Override
     public void onAttachFragment(Fragment fragment) {
         super.onAttachFragment(fragment);
-//        DatabaseHelper databaseHelper = new DatabaseHelper(this);
-//        int cartCount =  databaseHelper.noOfItem();
-        BottomBarTab cart = bottomBar.getTabWithId(R.id.tab_cart);
-        cart.setBadgeCount(1);
+        setBadge();
+
     }
+
+    /// SetUp of Badge on BottomNavigationBar
+
+    public void setBadge( )
+    {
+        DatabaseHelper databaseHelper = new DatabaseHelper(this);
+        int cartCount =  databaseHelper.noOfItem();
+        BottomBarTab cart = bottomBar.getTabWithId(R.id.tab_cart);
+        cart.setBadgeCount(cartCount);
+    }
+
+   /// check Current user or skip condition
+   /// if both condition aren't satisfied then send to start
 
     @Override
     public void onStart() {

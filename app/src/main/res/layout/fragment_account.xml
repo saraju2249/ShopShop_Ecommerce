@@ -53,8 +53,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="0dp"
                 android:clickable="true"
+                android:focusable="true"
                 android:padding="16dp"
-                android:text="CART" />
+                android:text="@string/cart" />
 
         </LinearLayout>
 
@@ -83,7 +84,7 @@
                 android:layout_margin="0dp"
                 android:clickable="true"
                 android:padding="16dp"
-                android:text="ORDERS" />
+                android:text="@string/orders" />
 
         </LinearLayout>
 
@@ -111,7 +112,7 @@
                 android:background="#fff"
                 android:clickable="true"
                 android:padding="16dp"
-                android:text="FAVORITE" />
+                android:text="@string/favorite" />
 
         </LinearLayout>
 
@@ -140,7 +141,7 @@
                 android:background="#fff"
                 android:clickable="true"
                 android:padding="16dp"
-                android:text="SETTING" />
+                android:text="@string/setting" />
 
         </LinearLayout>
 
@@ -169,7 +170,7 @@
                 android:background="#fff"
                 android:clickable="true"
                 android:padding="16dp"
-                android:text="LOG OUT" />
+                android:text="@string/log_out" />
 
         </LinearLayout>
 
@@ -189,7 +190,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="134dp"
-            android:text="User"
+            android:text="@string/user"
             android:textColor="#D4D9DA"
             android:textSize="30sp" />
 

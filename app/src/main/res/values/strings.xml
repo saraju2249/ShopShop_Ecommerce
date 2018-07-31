@@ -11,4 +11,53 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="enter_your_email_here">Enter your email Here</string>
+    <string name="back">BACK</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="product_name">Product Name</string>
+    <string name="brand_name">Brand Name</string>
+    <string name="free_delivery">FREE Delivery</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="details">Details</string>
+    <string name="u2022_regular_fit_full_sleeve">• Regular fit, full sleeve</string>
+    <string name="u2022_fabric_cotton">• Fabric: Cotton</string>
+    <string name="u2022_pattern_printed">• Pattern: printed</string>
+    <string name="description">Description</string>
+    <string name="buy_now">BUY NOW</string>
+    <string name="add_to_cart">ADD TO CART</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="doesn_t_have_an_account_register">Doesn\'t Have an Account ? REGISTER</string>
+    <string name="forgot_your_password">Forgot your password?</string>
+    <string name="favorite_brands">FAVORITE BRANDS</string>
+    <string name="delivery_charge_free">Delivery charge: FREE</string>
+    <string name="size_42">Size: 42</string>
+    <string name="qty_1">Qty: 1</string>
+    <string name="men">Men</string>
+    <string name="rs_3_277">Rs. 3,277</string>
+    <string name="size_40">Size: 40</string>
+    <string name="orders">ORDERS</string>
+    <string name="cart">CART</string>
+    <string name="favorite">FAVORITE</string>
+    <string name="setting">SETTING</string>
+    <string name="log_out">LOG OUT</string>
+    <string name="user">User</string>
+    <string name="cart_is_empty">Cart Is Empty</string>
+    <string name="rs_xxxx">Rs. XXXX</string>
+    <string name="developing_stage">Developing Stage</string>
+    <string name="search_items">Search items</string>
+    <string name="message">Message</string>
+    <string name="top_offer">TOP OFFER</string>
+    <string name="jack_amp_jones"><![CDATA[Jack & Jones]]></string>
+    <string name="rs_3500">Rs. 3500</string>
+    <string name="password">password</string>
+    <string name="email">email</string>
+    <string name="need_an_account">NEED AN ACCOUNT ?</string>
+    <string name="register">REGISTER</string>
+    <string name="username">username</string>
+    <string name="adidas">Adidas</string>
+    <string name="rs_3200">RS.3200</string>
+    <string name="trending_now">TRENDING NOW</string>
+    <string name="clothes">clothes</string>
+
 </resources>

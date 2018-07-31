@@ -3,16 +3,17 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.esperer.shopshop.R;
 import com.esperer.shopshop.database.DatabaseHelper;
 import com.esperer.shopshop.models.OrderSingle;
@@ -23,14 +24,20 @@ import java.util.List;
 
 public class CartFragment extends Fragment {
 
-    public static TextView totalPrice;
 
+
+    /// Database
     private DatabaseHelper helper;
 
+    /// View
+    public static TextView totalPrice;
     RelativeLayout emptyCart ;
     LinearLayout cartView;
     RecyclerView recyclerView ;
     CartAdapter adapter;
+    FloatingActionButton cartFab;
+
+
     public  static List<OrderSingle> orderList;
     OrderSingle order;
 
@@ -43,6 +50,7 @@ public class CartFragment extends Fragment {
         recyclerView = view.findViewById(R.id.cart_view);
         cartView =  view.findViewById(R.id.cartView);
         emptyCart = view.findViewById(R.id.emptyCart);
+        cartFab =  view.findViewById(R.id.cart_fab);
 
 
 
@@ -80,10 +88,12 @@ public class CartFragment extends Fragment {
 
 
 
+        clickFab( );
 
         return view;
     }
 
+      /// get data from database
 
            public  List<OrderSingle> getOrder( )
            {    helper = new DatabaseHelper(getActivity().getApplicationContext());
@@ -102,16 +112,12 @@ public class CartFragment extends Fragment {
                   order = new OrderSingle(Integer.parseInt(product_id),product_name,product_brand,
                           product_img,Integer.parseInt(product_quantity),Integer.parseInt(product_price));
 
-
-
                   orderList.add(order);
-
-
 
 
                }
 
-               Log.d("test",orderList.toString());
+              // Log.d("test",orderList.toString());
 
                return orderList;
            }
@@ -138,6 +144,17 @@ public class CartFragment extends Fragment {
                  return i+"";
 
 
+           }
+
+           public void clickFab( )
+           {
+               cartFab.setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View view) {
+
+                       Toast.makeText(getContext(),"fab clicked",Toast.LENGTH_SHORT).show();
+                   }
+               });
            }
 
 

@@ -2,52 +2,45 @@ package com.esperer.shopshop.ui.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.esperer.shopshop.R;
-import com.esperer.shopshop.api.IServiceRequest;
+import com.esperer.shopshop.api.ServiceRequest;
 import com.esperer.shopshop.api.ServiceHandler;
 import com.esperer.shopshop.models.StyleSingle;
-import com.esperer.shopshop.ui.activities.home_activity;
 import com.esperer.shopshop.ui.adapters.SearchAdapter;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
-
-public class SearchFragment  extends Fragment  implements IServiceRequest{
+public class SearchFragment  extends Fragment  implements ServiceRequest {
 
 
     private RecyclerView mRecyclerView;
     EditText searchEditText;
     private ArrayList<StyleSingle> filterProducts;
     TextView defaultMessage;
+    ImageView searchIcon;
 
     public static List<StyleSingle> allProduct;
-    IServiceRequest serviceRequest;
+    ServiceRequest serviceRequest;
     String responseData = "";
     SearchAdapter searchAdapter;
 
@@ -66,7 +59,11 @@ public class SearchFragment  extends Fragment  implements IServiceRequest{
 
         searchEditText = view.findViewById(R.id.search_edittext);
         defaultMessage = view.findViewById(R.id.defaultMessage);
-        defaultMessage.setText("Search Any Product");
+        //defaultMessage.setText("Search Any Product");
+        defaultMessage.setText("");
+        searchIcon =  view.findViewById(R.id.search_image);
+
+
 
 
 
@@ -81,6 +78,7 @@ public class SearchFragment  extends Fragment  implements IServiceRequest{
 
             }
 
+            /// set data after text changed
             @Override
             public void afterTextChanged(Editable editable) {
                 //Log.d("text", editable.toString());
@@ -92,6 +90,7 @@ public class SearchFragment  extends Fragment  implements IServiceRequest{
         return view;
     }
 
+    /// add search result to filterList
     public void searchProducts(String search) {
 
         filterProducts = new ArrayList<>();
@@ -109,19 +108,25 @@ public class SearchFragment  extends Fragment  implements IServiceRequest{
             defaultMessage.setVisibility(View.VISIBLE);
         } else {
             defaultMessage.setVisibility(View.GONE);
+            searchIcon.setVisibility(View.GONE);
         }
         //Log.d("size", filterProducts.size() + "" + home_activity.allProduct.size());
     } else
 
     {
         filterProducts = new ArrayList<>();
-        defaultMessage.setText("Search Any Product");
+        //defaultMessage.setText("Search Any Product");
+        defaultMessage.setText("");
         defaultMessage.setVisibility(View.VISIBLE);
+        searchIcon.setVisibility(View.VISIBLE);
     }
 
         setProductsData();
 
 }
+
+/// set search adapter
+
     private void setProductsData() {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 1);
         mRecyclerView.setLayoutManager(gridLayoutManager);
@@ -129,6 +134,9 @@ public class SearchFragment  extends Fragment  implements IServiceRequest{
         mRecyclerView.setAdapter(searchAdapter);
 
     }
+
+
+    //// get all the item from api
 
     public void getAllProduct(){
 
@@ -237,12 +245,10 @@ public class SearchFragment  extends Fragment  implements IServiceRequest{
                     Toast.makeText(getActivity().getApplicationContext(),e,Toast.LENGTH_LONG).show();
                 }
             });
-
-
         }
-
     }
+
+
+
 }
-
-
 

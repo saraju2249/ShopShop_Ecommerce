@@ -23,11 +23,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
-
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.esperer.shopshop.R;
-import com.esperer.shopshop.api.IServiceRequest;
+import com.esperer.shopshop.api.ServiceRequest;
 import com.esperer.shopshop.api.ServiceHandler;
 import com.esperer.shopshop.database.databaseFavorite;
 import com.esperer.shopshop.models.BrandSingle;
@@ -36,15 +34,11 @@ import com.esperer.shopshop.models.OfferSingle;
 import com.esperer.shopshop.models.TendingSingle;
 import com.esperer.shopshop.models.VarietiesSingle;
 import com.esperer.shopshop.ui.adapters.MainAdapter;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.util.ArrayList;
-
-
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -53,16 +47,22 @@ import okhttp3.Response;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
-public class HomeFragment extends Fragment implements IServiceRequest {
+public class HomeFragment extends Fragment implements ServiceRequest {
 
 
-    private IServiceRequest serviceRequest;
+
+
+    private ServiceRequest serviceRequest;
     String responseData = "";
+
+    /// Views
     private RecyclerView recyclerView;
     private MainAdapter adapter ;
     private static Context sContext;
     private ProgressBar mProgressBar;
     private CoordinatorLayout coordinatorLayout;
+
+    /// create arrays to store List of data
     private ArrayList<Object> objects = new ArrayList<>();
     private static ArrayList<CategorySingle> categoryList;
     private static ArrayList<OfferSingle> offerList;
@@ -72,11 +72,8 @@ public class HomeFragment extends Fragment implements IServiceRequest {
 
     private Toolbar toolbar;
     public static int number;
-
-    TextView txtViewCount;
     private int count ;
 
-    private TextView mCounter;
 
 
 
@@ -94,6 +91,7 @@ public class HomeFragment extends Fragment implements IServiceRequest {
         mProgressBar = view.findViewById(R.id.progress_bar);
         coordinatorLayout = view.findViewById(R.id.homeCoordinate);
 
+
         serviceRequest = HomeFragment.this;
         categoryList = new ArrayList<>();
         offerList = new ArrayList<>();
@@ -102,11 +100,9 @@ public class HomeFragment extends Fragment implements IServiceRequest {
         tendingList = new ArrayList<>();
 
 
-
         recyclerView = view.findViewById(R.id.all_recycler);
         adapter = new MainAdapter(getContext(), getObject());
         recyclerView.setHasFixedSize(true);
-
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -127,6 +123,13 @@ public class HomeFragment extends Fragment implements IServiceRequest {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+
+    }
+
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.clear();
 
@@ -135,7 +138,7 @@ public class HomeFragment extends Fragment implements IServiceRequest {
 
        inflater.inflate(R.menu.main_menu, menu);
         MenuItem  menuItem =  menu.findItem(R.id.favorite);
-        menuItem.setIcon(buildCounterDrawable(count, R.drawable.ic_favorite_white_24dp));
+        menuItem.setIcon(buildCounterDrawable(count));
 
 
 
@@ -143,18 +146,13 @@ public class HomeFragment extends Fragment implements IServiceRequest {
     }
 
 
-
-    private Drawable buildCounterDrawable(int count, int backgroundImageId){
+  /// create Drawer for toolbar item badge
+    private Drawable buildCounterDrawable(int count){
         LayoutInflater inflater = LayoutInflater.from(getActivity().getApplicationContext());
         View view = inflater.inflate(R.layout.counter_menu_item_layout, null);
-        //view.setBackgroundResource(backgroundImageId);
 
 
         TextDrawable drawable = TextDrawable.builder()
-                .buildRect("1", Color.RED);
-
-
-        TextDrawable drawable1 = TextDrawable.builder()
                 .beginConfig()
                 .textColor(Color.WHITE)
                 .useFont(Typeface.DEFAULT)
@@ -165,7 +163,7 @@ public class HomeFragment extends Fragment implements IServiceRequest {
                 .buildRound(count+"", Color.RED);
 
         ImageView image = (ImageView)  view.findViewById(R.id.BadgeRelativeLayout);
-        image.setImageDrawable(drawable1);
+        image.setImageDrawable(drawable);
 
         if (count == 0) {
             View counterTextPanel = view.findViewById(R.id.BadgeRelativeLayout);
@@ -174,8 +172,6 @@ public class HomeFragment extends Fragment implements IServiceRequest {
 //            TextView textView = (TextView) view.findViewById(R.id.BadgeCount);
 //            //textView.setText("" + count);
         }
-
-
 
 
         view.measure(
@@ -202,6 +198,9 @@ public class HomeFragment extends Fragment implements IServiceRequest {
 
             case R.id.notification:
 
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new NotificationFragment()).commit();
+
                 break;
         }
         return true;
@@ -217,36 +216,38 @@ public class HomeFragment extends Fragment implements IServiceRequest {
         return objects;
         }
 
-
-
-
        ///  returning CategoryList
       public  ArrayList<CategorySingle> getCategory() {
 
         return  categoryList ;
         }
 
+      /// returning offerList
       public ArrayList<OfferSingle> getOffer() {
 
         return  offerList ;
        }
+
+    /// returning brandList
 
       public ArrayList<BrandSingle> getBrand() {
 
         return  brandList ;
        }
 
+    /// returning varietiesList
+
       public  ArrayList<VarietiesSingle> getVarieties() {
 
         return  varietiesList ;
        }
 
+    /// returning trendingList
+
        public ArrayList<TendingSingle> getTrending() {
 
         return tendingList;
     }
-
-
 
 
       // returning Activity Context
@@ -318,6 +319,7 @@ public class HomeFragment extends Fragment implements IServiceRequest {
                             int offerDiscount =  offer.getInt("minDiscount");
                             String offerBrandName = offer.getString("offerBrandName");
 
+                            ///  adding data to OfferSingle
                                 OfferSingle offerSingle = new OfferSingle(offerImg, categoryName,offerDiscount ,type,offerBrandName);
                                 offerList.add(offerSingle);
                                 //Log.d("check",categoryName);
@@ -343,6 +345,7 @@ public class HomeFragment extends Fragment implements IServiceRequest {
                             String brand_img = brand.getString("brandImg");
                             int brand_id = brand.getInt("brandId");
 
+                            ///  adding data to BrandSingle
                             BrandSingle singleBrand = new BrandSingle(brand_name,brand_img, brand_id);
                             brandList.add(singleBrand);
 
@@ -365,6 +368,7 @@ public class HomeFragment extends Fragment implements IServiceRequest {
                             String brand_name = trending.getString("brandName");
 
 
+                              ///  adding data to TendingSingle
                             TendingSingle trendingSingle = new TendingSingle(product_name, product_desc, product_img, product_price, product_discount, product_category, product_id,brand_name,product_varieties);
                             tendingList.add(trendingSingle);
 
@@ -373,11 +377,32 @@ public class HomeFragment extends Fragment implements IServiceRequest {
 
 
                         ///  adding data to ObjectList
-                        objects.add(getCategory().get(getCategory().size()-1));
-                        objects.add(getVarieties().get(getVarieties().size()-1));
-                        objects.add(getBrand().get(getBrand().size()-1));
-                        objects.add(getOffer().get(getOffer().size()-1));
-                        objects.add(getTrending().get(getTrending().size()-1));
+                        if(getCategory().size() > 0)
+                        {
+                            objects.add(getCategory().get(getCategory().size()-1));
+                        }
+                        if(getCategory().size() > 0)
+                        {
+                            objects.add(getVarieties().get(getVarieties().size()-1));
+                        }
+
+                        if(getCategory().size() > 0)
+                        {
+                            objects.add(getBrand().get(getBrand().size()-1));
+                        }
+
+                        if(getCategory().size() > 0)
+                        {
+                            objects.add(getOffer().get(getOffer().size()-1));
+                        }
+                        if(getCategory().size() > 0)
+                        {
+                            objects.add(getTrending().get(getTrending().size()-1));
+                        }
+
+
+
+
 
 
 
@@ -410,6 +435,7 @@ public class HomeFragment extends Fragment implements IServiceRequest {
     }
 
 
+
     @Override
     public void onResponse(String response) {
 
@@ -428,6 +454,7 @@ public class HomeFragment extends Fragment implements IServiceRequest {
     @Override
         public void onError( String errorResponse) {
 
+        /// show error snackbar
             final String e = errorResponse;
 
         if(this.getActivity() != null) {

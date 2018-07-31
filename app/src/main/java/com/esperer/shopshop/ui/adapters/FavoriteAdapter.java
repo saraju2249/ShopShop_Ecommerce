@@ -58,7 +58,6 @@ public class FavoriteAdapter extends  RecyclerView.Adapter<FavoriteAdapter.ViewH
 
         FavoriteSingle favoriteSingle = favoriteList.get(position);
         holder.favoriteSingle = favoriteSingle;
-
         holder.product_Name.setText(favoriteSingle.getProductName());
         holder.product_Brand.setText(favoriteSingle.getProductBrand());
         holder.price.setText("Rs."+favoriteSingle.getPrice());

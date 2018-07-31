@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class databaseFavorite extends SQLiteOpenHelper {
 
-
+/// set database
     private static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "favorite.db";
     public static final String TABLE_NAME = "favorite_table";
@@ -20,13 +20,14 @@ public class databaseFavorite extends SQLiteOpenHelper {
     public static final String col_6 = "product_discount";
 
 
-
+    /// Provide a suitable constructor
     public databaseFavorite(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
 
     }
 
+    ///  create table
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -53,6 +54,7 @@ public class databaseFavorite extends SQLiteOpenHelper {
 
     }
 
+    /// insert values to database
     public boolean insert (String product_id, String product_name,String product_brand, String product_img,
                            String product_price,String product_discount )
     {
@@ -74,6 +76,7 @@ public class databaseFavorite extends SQLiteOpenHelper {
         else return true;
     }
 
+    ///  method to get all the data from database
     public Cursor getAllData( )
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -83,6 +86,7 @@ public class databaseFavorite extends SQLiteOpenHelper {
         return  res;
     }
 
+    /// method to update data into database
     public boolean update(String product_id, String product_name,String product_brand, String product_img,
                          String product_price,String product_discount )
     {
@@ -103,6 +107,10 @@ public class databaseFavorite extends SQLiteOpenHelper {
 
     }
 
+   /*  method to delete data
+       @param product_id
+   */
+
     public Integer delete( String product_id)
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -113,6 +121,8 @@ public class databaseFavorite extends SQLiteOpenHelper {
 
     }
 
+
+    /// method to get no of item
     public int noOfItem( ){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -129,7 +139,7 @@ public class databaseFavorite extends SQLiteOpenHelper {
         return  i;
     }
 
-
+    /// method to get total price of items
     public Cursor getTotalPrice(){
 
         SQLiteDatabase db = this.getWritableDatabase();

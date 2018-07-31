@@ -12,6 +12,7 @@ public class ShopShopApplicaton extends Application {
     public void onCreate() {
         super.onCreate();
 
+       // /  set ScreenOrientation to Portrait in all activity
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {

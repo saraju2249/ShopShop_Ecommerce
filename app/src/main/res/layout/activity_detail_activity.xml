@@ -67,7 +67,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:padding="12dp"
-                        android:text="Product Name"
+                        android:text="@string/product_name"
                         android:textColor="@color/colorPrimary"
                         android:textSize="18sp"
                         android:textStyle="normal" />
@@ -83,9 +83,9 @@
                             android:id="@+id/brand_detail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Brand Name"
+                            android:text="@string/brand_name"
                             android:textColor="@android:color/black"
-                            android:textSize="16dp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/price_detail"
@@ -94,14 +94,14 @@
                             android:layout_marginTop="8dp"
                             android:text="Rs. 1,979"
                             android:textColor="@android:color/black"
-                            android:textSize="20dp" />
+                            android:textSize="20sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="FREE Delivery"
-                            android:textSize="12dp" />
+                            android:text="@string/free_delivery"
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -120,7 +120,7 @@
                             android:paddingTop="2dp"
                             android:text="4.0 *"
                             android:textColor="@color/gen_white"
-                            android:textSize="12dp"
+                            android:textSize="12sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -129,10 +129,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="12dp"
                             android:text="100 ratings \u0026 20 reviews"
-                            android:textSize="12dp" />
+                            android:textSize="12sp" />
 
                     </LinearLayout>
-                    /
+
 
                     <View
                         android:layout_width="match_parent"
@@ -171,7 +171,7 @@
                                 android:gravity="left"
                                 android:text="Share"
                                 android:textColor="@color/gen_black"
-                                android:textSize="12dp" />
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                         <View
@@ -202,7 +202,7 @@
                                 android:gravity="left"
                                 android:text="Similar"
                                 android:textColor="@color/gen_black"
-                                android:textSize="12dp" />
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                         <View
@@ -232,9 +232,9 @@
                                 android:layout_marginLeft="8dp"
                                 android:layout_weight="1"
                                 android:gravity="left"
-                                android:text="Wishlist"
+                                android:text="@string/wishlist"
                                 android:textColor="@color/gen_black"
-                                android:textSize="12dp" />
+                                android:textSize="12sp" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -256,33 +256,33 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Details"
+                            android:text="@string/details"
                             android:textColor="@color/gen_black"
-                            android:textSize="16dp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="\u2022 Regular fit, full sleeve"
+                            android:text="@string/u2022_regular_fit_full_sleeve"
                             android:textColor="@color/gen_black"
-                            android:textSize="12dp" />
+                            android:textSize="12sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="\u2022 Fabric: Cotton"
+                            android:text="@string/u2022_fabric_cotton"
                             android:textColor="@color/gen_black"
-                            android:textSize="12dp" />
+                            android:textSize="12sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="\u2022 Pattern: printed"
+                            android:text="@string/u2022_pattern_printed"
                             android:textColor="@color/gen_black"
-                            android:textSize="12dp" />
+                            android:textSize="12sp" />
 
                     </LinearLayout>
 
@@ -298,8 +298,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Description"
-                            android:textSize="16dp"
+                            android:text="@string/description"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -310,7 +310,7 @@
                             android:layout_marginBottom="10dp"
                             android:layout_marginTop="10dp"
                             android:alpha="0.8"
-                            android:text="Description"
+                            android:text="@string/description"
                             android:textColor="@android:color/black"
                             android:textSize="12sp"
                             android:textStyle="italic" />
@@ -353,9 +353,9 @@
             android:layout_weight="1"
             android:background="@color/gen_white"
             android:gravity="center"
-            android:text="ADD TO CART"
+            android:text="@string/add_to_cart"
             android:textColor="@color/gen_black"
-            android:textSize="14dp"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <TextView
@@ -365,9 +365,9 @@
             android:layout_weight="1"
             android:background="@color/colorPrimary"
             android:gravity="center"
-            android:text="BUY NOW"
+            android:text="@string/buy_now"
             android:textColor="@color/gen_white"
-            android:textSize="14dp"
+            android:textSize="14sp"
             android:textStyle="bold" />
     </LinearLayout>
 

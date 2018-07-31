@@ -44,7 +44,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:alpha="0"
-                    android:text="clothes"
+                    android:text="@string/clothes"
                     android:textSize="30sp" />
 
                 <View

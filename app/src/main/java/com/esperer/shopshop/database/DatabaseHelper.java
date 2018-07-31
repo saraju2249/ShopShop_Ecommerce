@@ -10,6 +10,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
 
+    ///  set database
+
     private static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "cart.db";
     public static final String TABLE_NAME = "cart_table";
@@ -28,6 +30,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    ///  create table
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -54,6 +57,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    /*  method to insert data
+       @param ( product_id, product_name, product_brand, product_img, product_quantity, product_price
+       )
+   */
+
     public boolean insert (String product_id, String product_name,String product_brand, String product_img,
                            String product_quantity, String product_price )
     {
@@ -74,6 +82,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         else return true;
     }
 
+    //  method to get all the data from database
     public Cursor getAllData( )
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -82,6 +91,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return  res;
     }
+
+     /*  method to delete data
+       @param ( product_id, product_name, product_brand, product_img, product_quantity, product_price
+       )
+   */
 
     public boolean update(String product_id, String product_name,String product_brand, String product_img,
                           String product_quantity, String product_price )
@@ -103,6 +117,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+      /*  method to delete data
+       @param product_id
+   */
+
+
     public Integer delete( String product_id)
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -112,6 +131,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     }
+
+    /// method to get no of item
 
     public int noOfItem( ){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -129,6 +150,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return  i;
     }
 
+    /* method to get Quantity of item
+       @param product_id */
+
     public Cursor getQuantity (String id )
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -139,6 +163,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    /// method to get total price of items
     public Cursor getTotalPrice(){
 
         SQLiteDatabase db = this.getWritableDatabase();

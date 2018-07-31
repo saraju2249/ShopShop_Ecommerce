@@ -18,14 +18,18 @@ import com.squareup.picasso.Picasso;
 public class DetailActivity extends AppCompatActivity {
 
 
-    private StyleSingle detail;
+   //// views
     private TendingSingle trending;
     private ImageView imgDetail, addToWish;
-    private TextView nameDetail,priceDetail,descDetail,discountDetail,brandDetail;
+    private TextView nameDetail,priceDetail,descDetail,discountDetail,brandDetail,addToCart,buyButton;
 
+    /// database
     private DatabaseHelper mDatabaseHelper;
-   private databaseFavorite mDatabaseFavorite;
-    private TextView addToCart,buyButton;
+    private databaseFavorite mDatabaseFavorite;
+
+    ////  reference data
+    private StyleSingle detail;
+
 
 
 
@@ -34,6 +38,7 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_activity);
 
+        /// get all the references
         imgDetail = findViewById(R.id.detail_img);
         nameDetail = findViewById(R.id.detail_name);
         descDetail = findViewById(R.id.description_detail);
@@ -49,12 +54,21 @@ public class DetailActivity extends AppCompatActivity {
 
 
 
+      ///  there are 2 way to make item details page
+      ///  1. send all the data to other activity using intent or Bundle ( with android parcelable or java serializable )
+      ///  2. send the id of item is pressed and using api filter data according to id
+
+        /// in this activity used 1 approach and sending data from HomeFragment and StyleActivity to DetailActivity
+        /// To see 2 approach open DetailsActivity(notice only naming differences b/w both activity is "s" after Detail)
+
+
+
+        /// check if coming data belong to StyleSingle or TrendingSingle
+        /// according to data store in pojo class & show them in DetailActivity
 
 
         if((getIntent().getParcelableExtra(Constant.stylesKey))instanceof StyleSingle) {
             detail = (StyleSingle) getIntent().getParcelableExtra(Constant.stylesKey);
-
-
 
 
             nameDetail.setText(detail.getProductName());
@@ -72,6 +86,7 @@ public class DetailActivity extends AppCompatActivity {
                 }
             });
 
+            /// add to favorite
             addToWish.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -83,6 +98,7 @@ public class DetailActivity extends AppCompatActivity {
                 }
             });
 
+            /// buy button
             buyButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -123,8 +139,16 @@ public class DetailActivity extends AppCompatActivity {
         overridePendingTransition(0,0);
     }
 
+
+
+
     public void addToCart( String product_id, String product_name,String product_brand, String product_img,
                            String product_quantity, String product_price )
+
+
+    /// check item is already present or not in cart database
+    /// if not present just add to cart cart database
+    /// if already present then find the total quantity & addition with 1
     {
         int checkAvailability =  getQuantity(product_id);
 
@@ -157,13 +181,16 @@ public class DetailActivity extends AppCompatActivity {
 
             }
 
-          Toast.makeText(DetailActivity.this,checkAvailability+"",Toast.LENGTH_SHORT).show();
+          //Toast.makeText(DetailActivity.this,checkAvailability+"",Toast.LENGTH_SHORT).show();
 
 
         }
 
     }
 
+
+    /// get no of product which are present in favorite database
+    /// count the total price
     public int getQuantity( String id )
     {
             DatabaseHelper helper = new DatabaseHelper(this);
@@ -183,17 +210,16 @@ public class DetailActivity extends AppCompatActivity {
     public void addToWish( String product_id, String product_name,String product_brand, String product_img,
                 String product_price,String product_desc, String product_discount, String product_varieties )
     {
-        int checkAvailability =  getQuantity(product_id);
 
-
-            boolean isAdded =  mDatabaseFavorite.insert(product_id, product_name,product_brand,  product_img,
+       /// check if item is already exist or not
+       /// if not then add to favoritelist
+       /// else doesn't add to  favoritelist
+      boolean isAdded =  mDatabaseFavorite.insert(product_id, product_name,product_brand,  product_img,
                       product_price,product_discount);
-
 
             if (isAdded == true)
             {
                 Toast.makeText(DetailActivity.this,"Added to Favorite",Toast.LENGTH_SHORT).show();
-
 
             }
 

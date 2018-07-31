@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
 import com.esperer.shopshop.R;
 import com.esperer.shopshop.constants.Constant;
 import com.esperer.shopshop.models.StyleSingle;

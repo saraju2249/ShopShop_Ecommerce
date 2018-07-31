@@ -42,7 +42,7 @@
 
                     android:layout_centerInParent="true"
                     android:alpha="0"
-                    android:text="ameican"
+                    android:text="@string/men"
                     android:textSize="30sp" />
 
                 <View

@@ -1,22 +1,17 @@
 package com.esperer.shopshop.ui.adapters;
-
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.esperer.shopshop.R;
 import com.esperer.shopshop.constants.Constant;
 import com.esperer.shopshop.models.OfferSingle;
 import com.esperer.shopshop.ui.activities.Styles;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 
 public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.MyViewHolder> {

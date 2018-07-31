@@ -11,7 +11,6 @@ public class OfferSingle  {
     private String type;
     private String offerBrandName;
 
-
     public OfferSingle( ){
 
     }

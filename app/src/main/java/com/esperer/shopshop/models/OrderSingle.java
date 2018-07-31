@@ -9,7 +9,6 @@ public class OrderSingle {
     private int quantity;
     private int price;
 
-
     public OrderSingle() {
     }
 

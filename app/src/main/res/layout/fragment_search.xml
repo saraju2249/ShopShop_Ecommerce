@@ -32,7 +32,7 @@
                 android:layout_weight="4"
                 android:backgroundTint="@android:color/transparent"
                 android:ems="10"
-                android:hint="Search items"
+                android:hint="@string/search_items"
                 android:inputType="textPersonName"
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="143dp" />
@@ -54,6 +54,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/search_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="138dp"
+            app:srcCompat="@drawable/searchproducticon" />
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/searchProductsRecyclerView"
             android:layout_width="match_parent"
@@ -64,10 +73,10 @@
             android:id="@+id/defaultMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="200dp"
-            android:text="Message"
+            android:layout_marginBottom="42dp"
+            android:text="@string/message"
             android:textSize="24sp" />
     </RelativeLayout>
 

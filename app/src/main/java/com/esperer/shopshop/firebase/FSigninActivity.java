@@ -7,14 +7,12 @@ import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.esperer.shopshop.R;
 import com.esperer.shopshop.ui.activities.home_activity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,25 +22,25 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class FSigninActivity extends AppCompatActivity {
 
-    private EditText login_eamil ;
-    private EditText login_password;
+    /// View
+    private EditText login_eamil,login_password ;
     private Button login_button;
-    private TextView forgatPassword;
-    private TextView signup_button;
-    private TextView skip;
+    private TextView forgatPassword, signup_button, skip;
+    private ProgressDialog mloginProgress;
 
-    public static boolean skipped;
 
+    /// SharedPreferences
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
 
+    /// FirebaseAuth
+    private FirebaseAuth mAuth;
+
+    public static boolean skipped;
     public static String signinEmail;
 
-    private ProgressDialog mloginProgress;
 
-    private Toolbar mToolbar;
 
-    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,19 +53,20 @@ public class FSigninActivity extends AppCompatActivity {
         login_button = findViewById(R.id.login_button);
         forgatPassword = findViewById(R.id.btn_forgot_password);
         skip =  findViewById(R.id.skip);
-
         signinEmail = login_eamil.getText().toString();
+        signup_button= findViewById(R.id.create_account_btn);
 
 
         mloginProgress = new ProgressDialog(this);
 
         mAuth = FirebaseAuth.getInstance();
-        signup_button= findViewById(R.id.create_account_btn);
 
-        skip.setOnClickListener(new View.OnClickListener() {
+
+        skip.setOnClickListener(  new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                /// set skips as a preference
                 sharedpreferences =  getApplicationContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
                 editor = sharedpreferences.edit();
                 editor.putBoolean("skipCheck", true);
@@ -81,6 +80,8 @@ public class FSigninActivity extends AppCompatActivity {
 
             }
         });
+
+
 
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,6 +126,8 @@ public class FSigninActivity extends AppCompatActivity {
 
     }
 
+
+    /// method to login
     private void userLogin(String email, String password) {
 
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {

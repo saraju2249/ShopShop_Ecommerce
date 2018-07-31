@@ -9,7 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.esperer.shopshop.R;
-import com.esperer.shopshop.api.IServiceRequest;
+import com.esperer.shopshop.api.ServiceRequest;
 import com.esperer.shopshop.api.ServiceHandler;
 import com.esperer.shopshop.database.DatabaseHelper;
 import com.esperer.shopshop.database.databaseFavorite;
@@ -22,19 +22,15 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class DetailsActivity extends AppCompatActivity implements IServiceRequest{
+public class DetailsActivity extends AppCompatActivity implements ServiceRequest {
 
+    ///views
     private ImageView imgDetail, addToWish;
-    private TextView nameDetail,priceDetail,descDetail,discountDetail,brandDetail;
-
-
-    private TextView addToCart,buyButton;
-
-
+    private TextView nameDetail,priceDetail,descDetail,discountDetail,brandDetail,addToCart,buyButton;
     private RelativeLayout detailsLayout;
     private ProgressBar mProgressBar;
 
-
+   // reference keyId
     int keyId ;
 
     private String productId ;
@@ -46,8 +42,9 @@ public class DetailsActivity extends AppCompatActivity implements IServiceReques
     private int productPrice;
     private String productBand;
     private String productVarieties;
+
     private String responseData = "";
-    private IServiceRequest serviceRequest;
+    private ServiceRequest serviceRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +52,9 @@ public class DetailsActivity extends AppCompatActivity implements IServiceReques
         setContentView(R.layout.activity_details);
 
          serviceRequest = DetailsActivity.this;;
+
+         ///  get reference key id from activity who invoked DetailsActivity
+
          keyId = getIntent().getExtras().getInt("details");
          detailsLayout = findViewById(R.id.details_layout);
          mProgressBar = findViewById(R.id.progress_bar);
@@ -70,12 +70,7 @@ public class DetailsActivity extends AppCompatActivity implements IServiceReques
         buyButton = findViewById(R.id.buy_button);
         addToWish = findViewById(R.id.add_to_wish);
 
-
-
         getProduct();
-
-
-
 
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,6 +102,7 @@ public class DetailsActivity extends AppCompatActivity implements IServiceReques
 
     }
 
+   /// check KeyId from api if it matches then store values
 
     public void getProduct(){
 
@@ -153,18 +149,8 @@ public class DetailsActivity extends AppCompatActivity implements IServiceReques
                                  productBand = food.getString("brandName");
                                  productVarieties = food.getString("varietiesName");
 
-
-
-
-
-
                             }
-
-
-
                         }
-
-
 
                         serviceRequest.onResponse(responseData);
                         //Log.i("Response", responseData);
@@ -207,8 +193,6 @@ public class DetailsActivity extends AppCompatActivity implements IServiceReques
                 Picasso.with(getApplicationContext()).load(productImg).into(imgDetail);
             }
         });
-
-
 
 
 

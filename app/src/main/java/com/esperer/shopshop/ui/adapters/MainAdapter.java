@@ -22,17 +22,28 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
     private ArrayList<Object> items;
+    HomeFragment mHomeFragment = new HomeFragment();
+
     private final int CATEGORY = 1;
     private final int RECOMMEND = 2;
     private final int OFFER = 3;
     private final int BRAND = 4;
     private  final int VARIETIES = 5;
 
-    HomeFragment mHomeFragment = new HomeFragment();
+   /// Provide a suitable constructor
     public MainAdapter(Context context, ArrayList<Object> items) {
         this.context = context;
         this.items = items;
     }
+
+    /**
+     * This methods creates different RecyclerView.ViewHolder objects based on the item view type.\
+     *
+     * @param viewGroup ViewGroup container for the item
+     * @param viewType type of view to be inflated
+     * @return viewHolder to be inflated
+     */
+
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -75,6 +86,15 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return holder;
     }
 
+    /**
+     * This method internally calls onBindViewHolder(ViewHolder, int) to update the
+     * RecyclerView.ViewHolder contents with the item at the given position
+     * and also sets up some private fields to be used by RecyclerView.
+     *
+     * @param viewHolder The type of RecyclerView.ViewHolder to populate
+     * @param position Item position in the viewgroup.
+     */
+
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder.getItemViewType() == CATEGORY)
@@ -98,6 +118,13 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
     }
+
+
+    /**
+     * following methods creates and set adapter respect to view
+     * @param viewHolder The type of RecyclerView.ViewHolder to populate
+    */
+
 
     private void categoryView(CategoryViewHolder holder) {
 
@@ -133,14 +160,16 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
 
-
-
-
+    // Return the size of your dataset (invoked by the layout manager)
 
     @Override
     public int getItemCount() {
         return items.size();
     }
+
+   /* Returns the view type of the item at position for the purposes of view recycling
+     * @param position Item position in the viewgroup.
+   */
 
     @Override
     public int getItemViewType(int position) {
@@ -166,6 +195,9 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         return -1;
     }
+
+
+/// create viewHolder class for different different layout
 
     public class CategoryViewHolder extends RecyclerView.ViewHolder {
 

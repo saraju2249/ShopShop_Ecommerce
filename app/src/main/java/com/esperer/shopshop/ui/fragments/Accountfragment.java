@@ -12,8 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-
 import com.esperer.shopshop.R;
 import com.esperer.shopshop.firebase.StartActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,13 +21,16 @@ public class Accountfragment extends Fragment {
 
 
     TextView userAccount,logOut;
-    private FirebaseAuth mAuth;
-
-    SharedPreferences sharedpreferences;
-    TextView textName;
     ImageView  accountImg;
+    private TextView cartButton,favoriteButton, ordersButton, settingAccount,textName;
 
-    private TextView cartButton,favoriteButton, ordersButton, settingAccount;
+
+    private FirebaseAuth mAuth;
+    SharedPreferences sharedpreferences;
+
+
+
+
 
 
     @Nullable

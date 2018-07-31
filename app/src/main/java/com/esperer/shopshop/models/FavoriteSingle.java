@@ -13,9 +13,6 @@ public class FavoriteSingle  {
     private int productDiscount;
 
 
-
-
-
     public FavoriteSingle() {
     }
 

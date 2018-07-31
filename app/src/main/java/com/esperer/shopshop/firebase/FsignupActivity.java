@@ -7,14 +7,11 @@ import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.esperer.shopshop.R;
 import com.esperer.shopshop.ui.activities.home_activity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,20 +23,19 @@ public class FsignupActivity extends AppCompatActivity {
 
     private static final String TAG = "RegisterActivity";
 
+    /// view
     private EditText name ;
     private EditText email;
     private EditText password;
     private Button create_btn;
+    private ProgressDialog mRegisterProgress;
 
     public static String signupEmail;
 
+    ///  sharedPreference
     SharedPreferences sharedpreferences;
     SharedPreferences.Editor editor;
 
-
-
-
-    private ProgressDialog mRegisterProgress;
 
     private FirebaseAuth mAuth;
 

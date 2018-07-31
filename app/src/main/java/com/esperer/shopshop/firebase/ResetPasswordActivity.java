@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.esperer.shopshop.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -16,9 +15,12 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class ResetPasswordActivity extends AppCompatActivity {
 
+    /// View
     private EditText edtEmail;
     private Button btnResetPassword;
     private Button btnBack;
+
+    /// Firebase
     private FirebaseAuth mAuth;
 
     @Override
@@ -26,11 +28,13 @@ public class ResetPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_password);
 
+
         edtEmail = (EditText) findViewById(R.id.edt_reset_email);
         btnResetPassword = (Button) findViewById(R.id.btn_reset_password);
         btnBack = (Button) findViewById(R.id.btn_back);
 
         mAuth = FirebaseAuth.getInstance();
+
 
         btnResetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
